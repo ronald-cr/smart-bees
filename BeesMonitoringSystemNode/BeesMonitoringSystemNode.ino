@@ -114,43 +114,21 @@ void setup() {
   Serial.println(_modem.deviceEUI()); // needed for gateway-device configuration
   
   // based on read deviceEUI -> configure HW
-  if (_modem.deviceEUI() == "a8610a33341c7316")
+  if (_modem.deviceEUI() == "put your device eui here")
   { 
     configureHardwareForScale1();    
   }
 
-  if (_modem.deviceEUI() == "a8610a33372c8a0a")
+  if (_modem.deviceEUI() == "put your device eui here")
   { 
     configureHardwareForScale2();    
   }
 
-  if (_modem.deviceEUI() == "a8610a33341f7216")
-  { 
-    configureHardwareForScale3();
-  }
-
-  if (_modem.deviceEUI() == "a8610a3334296d16")
-  { 
-    configureHardwareForScale4();
-  }
-
-  if (_modem.deviceEUI() == "a8610a33341c8716")
-  { 
-    configureHardwareForScale5();
-  }
-
-  if (_modem.deviceEUI() == "a8610a33344c6c16")
-  { 
-    configureHardwareForScale6();
-  }
-  
   ShowConfiguration();
 
   // Hx711 configuration
   Serial.println("Hx711 configuration.");
   _scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
-  //_scale.set_scale();
-  //_scale.tare();
   _scale.set_offset(_scaleOffset);
   _scale.set_scale(_calibrationFactor);
 
@@ -237,58 +215,6 @@ void configureHardwareForScale2()
   _scaleOffset = 0;
 
   Serial.println("configureHardwareForScale2 - exit");
-}
-
-// Configure some values based on hardware environment.
-void configureHardwareForScale3()
-{
-  Serial.println("configureHardwareForScale3 - entry");
-  
-  _calibrationFactor = 14200;
-  _calibrationTemperature = 27;
-  _deviationFactor = 0.095;
-  _scaleOffset = 0;
-
-  Serial.println("configureHardwareForScale3 - exit");
-}
-
-// Configure some values based on hardware environment.
-void configureHardwareForScale4()
-{
-  Serial.println("configureHardwareForScale4 - entry");
-  
-  _calibrationFactor = 19880;
-  _calibrationTemperature = 25;
-  _deviationFactor = 0.095;
-  _scaleOffset = 237450;
-
-  Serial.println("configureHardwareForScale4 - exit");
-}
-
-// Configure some values based on hardware environment.
-void configureHardwareForScale5()
-{
-  Serial.println("configureHardwareForScale5 - entry");
-  
-  _calibrationFactor = 20900;
-  _calibrationTemperature = 23;
-  _deviationFactor = 0.095;
-  _scaleOffset = 0;
-
-  Serial.println("configureHardwareForScale5 - exit");
-}
-
-// Configure some values based on hardware environment.
-void configureHardwareForScale6()
-{
-  Serial.println("configureHardwareForScale6 - entry");
-  
-  _calibrationFactor = 19000;
-  _calibrationTemperature = 27;
-  _deviationFactor = 0.095;
-  _scaleOffset = 0;
-
-  Serial.println("configureHardwareForScale6 - exit");
 }
 
 // Show configuration for debugging.
